@@ -29,7 +29,8 @@ Written in Node.js
     
     this will install all dependencies that are necessary.
 
- 6. Now that all the things have been installed, the bot is ready to spam.
+ 6. If you want your own custom phrases, you can just edit the file `lines.txt`.
+ 7. Now that all the things have been installed, the bot is ready to spam.
  
 ## How to Use
 
