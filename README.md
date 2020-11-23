@@ -15,7 +15,7 @@ Written in Node.js
  * Custom delay between chat messages. In milliseconds.
  * An easy-to-use GUI with incorporated chat thanks to [mineflayer-dashboard](https://github.com/wvffle/mineflayer-dashboard).
  * Reconnect ability in case it's kicked form the server.
- * Online/Cracked mode support.
+ * Cracked mode support.
 
 ## Install
 
