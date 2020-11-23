@@ -16,7 +16,7 @@ if (process.argv.length < 5 || process.argv.length > 7) {
   console.log('')
   console.log('               \x1b[31mRed\x1b[0m: Needed, \x1b[32mGreen\x1b[0m: Optional')
   console.log('')
-  console.log('               \x1b[36mExample: node AFK.js localhost 25565 500 DrMoraschi\x1b[0m (this makes a cracked account bot')
+  console.log('               \x1b[36mExample: node SPAM.js localhost 25565 500 DrMoraschi\x1b[0m (this makes a cracked account bot')
   console.log('                                                                   that connects to localhost and sends\x1b[0m')
   console.log('                                                                   a message every 500 milliseconds)\x1b[0m')
   process.exit(1)
