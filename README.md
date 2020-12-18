@@ -33,7 +33,7 @@ Written in Node.js
  7. Now that all the things have been installed, the bot is ready to spam.
  
 ## How to Use
- 1. Before starting the bot, please take a look at config.json, the options are:
+ 1. Before starting the bot, please set up a Discord Bot and take a look at config.json, the options are:
  	* "minecraft": Main options of the bot.
 		* "host": IP of the server.
 		* "port": Port of the server. 25565 by default.
@@ -44,6 +44,7 @@ Written in Node.js
 	* "discord": Options for the Discord Bot.
 		* "token": Token of the Discord Bot.
 		* "channelID": ID of the channel where events will get printed. You need to enable Developer Mode to get an ID of a channel.
+		* "prefix": Prefix of the command.
 	* "phrases": Array of phrases, you can add an infinite number of them. Last phrase doesn't need a comma at the end.
  2. In your Command Line, repeat number 4 from "Install"; navigate to the folder where the files are located.
  3. To start the bot, just type in:
@@ -51,6 +52,11 @@ Written in Node.js
 	```node SPAM.js```
 
  4. Once you've written all, hit ENTER and watch as the bot connects to the server.
+ 
+ ## Commands
+ All this commands must be sent in a channel in Discord.
+ * [prefix]move: this moves the bot forward a bit.
+ * [prefix]spam: this starts the spamming process.
  
  #### WARNING
  
