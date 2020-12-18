@@ -68,7 +68,6 @@ function startBot() {
 
   bot.on('kicked', () => {
     kickcount += 1
-    bot.dashboard.log('\x1b[32m<STATUS>\x1b[0m \x1b[31mI got kicked. Kick count: '+`${kickcount}\x1b[0m`)
   })
 
   bot.on('login', () => {
