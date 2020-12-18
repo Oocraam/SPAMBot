@@ -11,9 +11,8 @@ Written in Node.js
 ## Features
 
  * Supports 1.16.1.
- * Infinite number of custom phrases. You can add your own phrases by editing the file `lines.txt`.
+ * Infinite number of custom phrases. You can add your own phrases by editing the file `config.json`.
  * Custom delay between chat messages. In milliseconds.
- * An easy-to-use GUI with incorporated chat thanks to [mineflayer-dashboard](https://github.com/wvffle/mineflayer-dashboard).
  * Reconnect ability in case it's kicked form the server.
  * Cracked mode support.
 
@@ -30,29 +29,28 @@ Written in Node.js
     
     this will install all dependencies that are necessary.
 
- 6. If you want your own custom phrases, you can just edit the file `lines.txt`.
+ 6. If you want your own custom phrases, you can just edit the file `config.json`.
  7. Now that all the things have been installed, the bot is ready to spam.
  
 ## How to Use
-
- 1. In your Command Line, repeat number 4 from "Install"; navigate to the folder where the files are located.
- 2. There are 4 arguments that are needed, and other 2 that are optional:
-
-	"host" : This is the IP or the subdomain of the server.
-
-	"port" : This is the port of the server.
+ 1. Before starting the bot, please take a look at config.json, the options are:
+ 	*"minecraft": Main options of the bot.
+		*"host": IP of the server.
+		*"port": Port of the server. 25565 by default.
+		*"username": A name for the bot, if the server has online-mode set to true, it's the e-mail.
+		*"password": Password of the account, if the server has online-mode set to false, you can leave it as null.
+	*"botOptions": Other options of the bot.
+		*"delay": Delay in milliseconds between each message.
+	*"discord": Options for the Discord Bot.
+		*"token": Token of the Discord Bot.
+		*"channelID": ID of the channel where events will get printed. You need to enable Developer Mode to get an ID of a channel.
+	*"phrases": Array of phrases, you can add an infinite number of them. Last phrase doesn't need a comma at the end.
+ 2. In your Command Line, repeat number 4 from "Install"; navigate to the folder where the files are located.
+ 3. To start the bot, just type in:
 	
-	"delay" : This is the delay between each message that is sent.
+	```node SPAM.js```
 
-	"username/gmail" : You need to type a username for the bot, write the e-mail in case the account is premium, default is "SPAMBot".
-
-	"password" : Ignore if the account is cracked, only for premium accounts.
-
-	Example:
-	
-	```node SPAM.js localhost 25565 500 mygmailcool@gmail.com mypasswordis1234```
-
- 3. Once you've written all, hit ENTER and watch as the GUI starts and the bot connects to the server.
+ 4. Once you've written all, hit ENTER and watch as the bot connects to the server.
  
  #### WARNING
  
