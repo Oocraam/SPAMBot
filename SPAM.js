@@ -1,89 +1,98 @@
-var mineflayer = require('mineflayer')
-const readline = require('readline');
-const fs = require('fs');
-var spammessage
-var rownumber
-var randomnumber
-var delay = false
-var kickcount = 0
+var spamOnKicked = false;
+var kickCount = 0;
+var onlyOnce = false;
 
-if (process.argv.length < 5 || process.argv.length > 7) {
-  console.log('Usage : AFK.js \x1b[31m<host>\x1b[0m')
-  console.log('               \x1b[31m<port>\x1b[0m')
-  console.log('               \x1b[31m<delay, delay in ms between each message>\x1b[0m')
-  console.log('               \x1b[32m[<name, gmail in case the account is premium>]\x1b[0m')
-  console.log('               \x1b[32m[<password, ignore in case the account is cracked>]\x1b[0m')
-  console.log('')
-  console.log('               \x1b[31mRed\x1b[0m: Needed, \x1b[32mGreen\x1b[0m: Optional')
-  console.log('')
-  console.log('               \x1b[36mExample: node SPAM.js localhost 25565 500 DrMoraschi\x1b[0m (this makes a cracked account bot')
-  console.log('                                                                   that connects to localhost and sends\x1b[0m')
-  console.log('                                                                   a message every 500 milliseconds)\x1b[0m')
-  process.exit(1)
-}
-
-startBot()
-
-const readInterface = readline.createInterface({
-  input: fs.createReadStream('lines.txt'),
-});
-
-readInterface.on('line', function(line) {
-  spammessage = line;
-});
+startBot();
 
 function startBot() {
+  console.clear();
+
+  const { minecraft, botOptions, discord, phrases } = require('./config.json');
+
+  const chalk = require('chalk');
+  const mineflayer = require('mineflayer');
+  const Discord = require('discord.js');
+  const client = new Discord.Client();
+  client.login(discord.token);
+  const prefix = discord.prefix;
+
+  if (!discord.channelID || !discord.token) {
+    console.log(chalk.blueBright('Please enter a Channel ID and a Discord Bot Token'));
+    process.exit();
+  };
+
+  var randomPhrase;
+  var phraseCount;
+
   var bot = mineflayer.createBot({
-    host: process.argv[2],
-    port: parseInt(process.argv[3]),
-    username: process.argv[5] ? process.argv[5] : 'SPAMBot',
-    password: process.argv[6]
-  })
-  
-  process.argv[5] = delay
-
-  bot.on('kicked', () =>
-    setTimeout(() => {
-      startBot()
-    }, 2000)
-  )
-
-  bot.on('spawn', () => {
-    function Start() {
-      const nthline = require('nthline'),
-          filePath = 'lines.txt',
-          rowIndex = rownumber
-      nthline(rowIndex, filePath).then(bot.chat)
-    }
-    setInterval(() => {
-      var randomnumber = Math.floor(Math.random() * (count - 0 + 1)) + 0;
-      rownumber = randomnumber
-      Start()
-    }, process.argv[4]);
-  })
-
-  bot.on('login', function() {
-    bot.loadPlugin(require('mineflayer-dashboard'))
-  })
-
-  bot.on('kicked', () => {
-    kickcount += 1
-  })
-
-  bot.on('login', () => {
-    bot.dashboard.log('\x1b[32m<STATUS> Correctly logged in\x1b[0m')
-  })
-
-  var i;
-  var count = 0;
-  require('fs').createReadStream('lines.txt')
-  .on('data', function(chunk) {
-    for (i=0; i < chunk.length; ++i)
-      if (chunk[i] == 10) count++;
-  })
-  .on('end', function() {
-    bot.once('login', () => {
-      bot.dashboard.log('\x1b[32m<STATUS> Found '+`${count + 1} `+'phrases\x1b[0m');
-    })
+    host: minecraft.host,
+    port: parseInt(minecraft.port),
+    username: minecraft.username ? minecraft.username : 'SPAMBot',
+    password: minecraft.password
   });
-}
+
+  client.on('message', (msg) => {
+    if (msg.author.id === client.user.id) return
+    switch (msg.content) {
+      case `${prefix}move`:
+        moveBot();
+        break
+      case `${prefix}spam`:
+        startSpam();
+        break
+      };
+  });
+
+  bot.once('spawn', () => {
+    if (spamOnKicked === true) {
+      console.log(chalk.redBright(`   Reconnected after kick! Kick count is ${kickCount}`));
+      startSpam();
+    } else {
+      null;
+    };
+
+    console.log(chalk.greenBright('   <STATUS> Correctly logged in'));
+    console.log(chalk.greenBright(`   <STATUS> Found ${Object.keys(phrases).length}`));
+  });
+
+  function startSpam() {
+    channel.send('Spamming!');
+
+    setInterval(() => {
+      phraseCount = Object.values(phrases);
+      randomPhrase = phraseCount[parseInt(Math.random() * phraseCount.length)];
+      bot.chat(randomPhrase);
+    }, botOptions.delay);
+    
+    bot.on('kicked', () => {
+      kickCount = kickCount + 1;
+
+      setTimeout(() => {
+        startBot();
+        spamOnKicked = true;
+      }, 2000);
+
+      client.removeAllListeners('message')
+      bot.removeAllListeners('spawn');
+      bot.removeAllListeners('kicked');
+    });
+  };
+
+  function moveBot() {
+    bot.setControlState('forward', true);
+    setTimeout(() => {
+      bot.clearControlStates();
+
+      channel.send('Moved!');
+    }, 500);
+  };
+
+  client.once('ready', () => {
+    if (onlyOnce === false) {
+      global.channel = client.channels.cache.find(channel => channel.id === discord.channelID);
+      channel.send(`Logged in as ${client.user.tag} and as ${minecraft.username}`);
+      
+      onlyOnce = true;
+    };
+  })
+};
