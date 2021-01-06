@@ -12,6 +12,7 @@ Written in Node.js
 
  * Supports 1.16.3.
  * Infinite number of custom phrases. You can add your own phrases by editing the file `config.json`.
+ * Discord Bot Support.
  * Custom delay between chat messages. In milliseconds.
  * Reconnect ability in case it's kicked form the server.
  * Cracked mode support.
