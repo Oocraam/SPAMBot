@@ -55,7 +55,7 @@ Written in Node.js
  4. Once you've written all, hit ENTER and watch as the bot connects to the server.
  
  ## Commands
- All this commands must be sent in a channel in Discord.
+ All these commands must be sent in a channel in Discord.
  * [prefix]move: this moves the bot forward a bit.
  * [prefix]spam: this starts the spamming process.
  
