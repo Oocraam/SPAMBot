@@ -6,7 +6,7 @@ Written in Node.js
 
 [Link](https://drmoraschi.github.io/SPAMBot/) to the page of this project.
 
-<img alt="logo" src="https://github.com/DrMoraschi/SPAMBot/raw/master/projectlogo.jpg" height="200" />
+<img alt="logo" src="https://github.com/DrMoraschi/SPAMBot/raw/master/images/projectlogo.jpg" height="200" />
 
 ## Features
 
