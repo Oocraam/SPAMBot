@@ -39,7 +39,7 @@ Written in Node.js
 		* "host": IP of the server.
 		* "port": Port of the server. 25565 by default.
 		* "username": A name for the bot, if the server has online-mode set to true, it's the e-mail.
-		* "password": Password of the account, if the server has online-mode set to false, you can leave it as null.
+		* "password": Password of the account, if the server has online-mode set to false, you can leave it blank.
 	* "botOptions": Other options of the bot.
 		* "delay": Delay in milliseconds between each message.
 	* "discord": Options for the Discord Bot.
