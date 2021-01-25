@@ -11,8 +11,8 @@
     },
 
     "discord" : {
-        "token" : "Nzc5NzEzNzUwNjg5MjUxMzU4.X7kjBA.3Fx8MKQoSdbq3AKZXQXA8o0Dplk",
-        "channelID" : "802660350360420417",
+        "token" : "",
+        "channelID" : "",
         "prefix" : "!"
     },
 
