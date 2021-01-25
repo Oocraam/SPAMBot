@@ -50,7 +50,7 @@ Written in Node.js
  2. In your Command Line, repeat number 4 from "Install"; navigate to the folder where the files are located.
  3. To start the bot, just type in:
 	
-	```node SPAM.js```
+	```node index.js```
 
  4. Once you've written all, hit ENTER and watch as the bot connects to the server.
  
