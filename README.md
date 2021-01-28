@@ -1,6 +1,6 @@
 [![Discord](https://img.shields.io/badge/Chat-Discord-blue.svg)](https://discord.gg/JQeVxbQT5G)
 # SPAMBot
-**This project is abandoned, sorry but I don't have the time and will to continue adding new features. Feel free to PR and I'll review them.**
+**This project is abandoned, sorry but I don't have the time and will to continue adding new features and I won't provide support. Feel free to PR and I'll review them.**
 
 A spamming bot for Minecraft thanks to [mineflayer](https://github.com/PrismarineJS/mineflayer). Mainly for Windows, not tested on other OS.
 
